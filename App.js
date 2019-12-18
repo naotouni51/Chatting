@@ -20,12 +20,13 @@ if (!firebase.apps.length) {
 
 class App extends React.Component {
   state = {
+    comment: '',
     commentList: []
   }
 
   handleSubmit() {
     let tempList = this.state.commentList
-    tempList.push("test")
+    tempList.push(this.state.comment)
     this.setState({commentList: tempList})
   }
 
@@ -40,7 +41,11 @@ class App extends React.Component {
               )
             })}
           </ScrollView>
-          <TextInput style={{backgroundColor: 'white'}} />
+          <TextInput
+            style={{backgroundColor: 'white'}}
+            onChangeText={(text) => this.setState({comment: text})}
+            value={this.state.comment}
+          />
           <Button title="ボタン" onPress={() => this.handleSubmit()}/>
         </KeyboardAvoidingView>
       </View>
