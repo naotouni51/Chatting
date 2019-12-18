@@ -25,9 +25,14 @@ class App extends React.Component {
   }
 
   handleSubmit() {
-    let tempList = this.state.commentList
-    tempList.push(this.state.comment)
-    this.setState({commentList: tempList})
+    // let tempList = this.state.commentList
+    // tempList.push(this.state.comment)
+    // this.setState({commentList: tempList})
+
+    firebase.firestore().collection('commentList').add({
+      comment: this.state.comment,
+      created_at: new Date()
+    })
   }
 
   render() {
