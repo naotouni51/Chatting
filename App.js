@@ -24,6 +24,17 @@ class App extends React.Component {
     commentList: []
   }
 
+  componentDidMount() {
+    firebase.firestore().collection("commentList")
+    .onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        this.setState({
+          commentList: this.state.commentList.concat(change.doc.data())
+        })
+      })
+    })
+  }
+
   handleSubmit() {
     // let tempList = this.state.commentList
     // tempList.push(this.state.comment)
@@ -42,7 +53,7 @@ class App extends React.Component {
           <ScrollView style={{flex: 1, backgroundColor: 'gray'}}>
             {this.state.commentList.map((value, index) => {
               return (
-                <Text key={index}>{value}</Text>
+                <Text key={index}>{value.comment}</Text>
               )
             })}
           </ScrollView>
