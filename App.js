@@ -26,14 +26,16 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={{flex: 1, backgroundColor: 'red'}}>
-          {this.state.commentList.map((value, index) => {
-            return (
-              <Text key={index}>{value}</Text>
-            )
-          })}
-        </ScrollView>
-        <TextInput style={{backgroundColor: 'white'}} />
+        <KeyboardAvoidingView style={{flex: 1}} behavior="height">
+          <ScrollView style={{flex: 1, backgroundColor: 'gray'}}>
+            {this.state.commentList.map((value, index) => {
+              return (
+                <Text key={index}>{value}</Text>
+              )
+            })}
+          </ScrollView>
+          <TextInput style={{backgroundColor: 'white'}} />
+        </KeyboardAvoidingView>
       </View>
     );
   }
