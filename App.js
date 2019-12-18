@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, KeyboardAvoidingView, TextInput, ScrollView, Button } from 'react-native';
 import firebase from "firebase";
 require("firebase/firestore")
 
@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <KeyboardAvoidingView style={{flex: 1}} behavior="height">
+        <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
           <ScrollView style={{flex: 1, backgroundColor: 'gray'}}>
             {this.state.commentList.map((value, index) => {
               return (
@@ -35,6 +35,7 @@ class App extends React.Component {
             })}
           </ScrollView>
           <TextInput style={{backgroundColor: 'white'}} />
+          <Button title="ボタン" onPress={() => console.log('test')}/>
         </KeyboardAvoidingView>
       </View>
     );
