@@ -46,7 +46,7 @@ class App extends React.Component {
             onChangeText={(text) => this.setState({comment: text})}
             value={this.state.comment}
           />
-          <Button title="ボタン" onPress={() => this.handleSubmit()}/>
+          <Button title="送信" onPress={() => this.handleSubmit()}/>
         </KeyboardAvoidingView>
       </View>
     );
